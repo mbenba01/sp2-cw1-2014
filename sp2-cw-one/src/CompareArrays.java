@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  *<h2>Coursework One</2>
  *<h3>Problem specification<?h3>
@@ -38,7 +40,7 @@
 
 /**
  * @author Mustapha Benbaziz
- * @version 1.0
+ * @version 2.0
  *
  */
 public class CompareArrays {
@@ -51,8 +53,51 @@ public class CompareArrays {
 	
 	public static void main(String[] args) {
 		
-		System.out.print("Enter digits to populate your array:");
 		
+		int[] arrayOne = new int[LENGTH];
+		int[] arrayTwo = new int[LENGTH];
+		int arrayOneSize = 0;
+		int arrayTwoSize = 0;
+		int trigger = 0;
+		System.out.println("Enter digit in first array: ");
+		System.out.println("enter zero (0) to stop:");
+		Scanner keyboard = new Scanner(System.in);
+		//Scanner keyboard_2 = new Scanner(System.in);
+		for(int i = 0; i <= arrayOneSize; i++) {
+			
+			arrayOne[i] = keyboard.nextInt();
+			
+			if(arrayOne[i] == trigger) {
+				
+				System.out.println("Thank you!");
+				System.out.println("You have entered " + arrayOneSize + " numbers in the first array");
+
+				continue;
+			}
+			
+			arrayOneSize++;
+		}
+		
+		System.out.println("Enter digit in second array: ");
+		
+
+		for(int j = 0; j <= arrayTwoSize; j++) {
+			arrayTwo[j] = keyboard.nextInt();
+			
+			if(arrayOne[j] == trigger) {
+				
+				System.out.println("Thank you!");
+				System.out.println("You have entered " + arrayTwoSize + " numbers in the Second array");
+				continue;
+				
+			}
+			
+			arrayTwoSize++;
+		}
+		
+	keyboard.close();
+	//keyboard_2.close();
 	}
+	
 
 }
