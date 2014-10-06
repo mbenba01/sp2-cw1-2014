@@ -6,7 +6,7 @@ import java.util.Scanner;
  *Given two arrays of integers, you are required to perform some array operations. You have to print the values which occur in both arrays, those which occur only in the first array, and those which occur only in the second.
 
  *<h3>Suggested approach</h3>
- *Create two empty integer arrays that will hold up to 100 integers. Then, repeatadly read integer values from the keyboard until the user types "0" (zero, without the quotes) and store those values in the first array. Ignore repeated occurences of a particular value in the data, so check each value to see whether it already occurs in the array before storing it.
+ *Create two empty integer arrays that will hold up to 100 integers. Then, repeatedly read integer values from the keyboard until the user types "0" (zero, without the quotes) and store those values in the first array. Ignore repeated occurences of a particular value in the data, so check each value to see whether it already occurs in the array before storing it.
 
  *Now the array should contain a set (which could be empty) of distinct integer values. Repeat the same procedure to fill the second array.
 
@@ -25,8 +25,10 @@ import java.util.Scanner;
  *
  *<h2>What to do in the following error cases</h2>
  *Any of the arrays could be empty, and this should not cause your program to behave erratically.
- *If both arrays are empty, print out Both arrays are empty, do not perform any calculations and exit to the operating system. In this simple exercise, you don't have to consider an error condition in case the number of integers entered are greater than 100 (thus causing your program to crash).
- *Any integer number that is entered, whether negative or positive, should be taken into account. Remember that 0 should be excluded from your arrays as this value is meant to stop the iteration and proceed to the calculation part (a so-called, sentinel value).
+ *If both arrays are empty, print out Both arrays are empty, do not perform any calculations and exit to the operating system. 
+ *In this simple exercise, you don't have to consider an error condition in case the number of integers entered are greater than 100 (thus causing your program to crash).
+ *Any integer number that is entered, whether negative or positive, should be taken into account. 
+ *Remember that 0 should be excluded from your arrays as this value is meant to stop the iteration and proceed to the calculation part (a so-called, sentinel value).
  *
  *<h3>Suggestions</h3>
  *You may break down your algorithm into methods to make your life easier. For example,
@@ -58,21 +60,24 @@ public class CompareArrays {
 		int[] arrayTwo = new int[LENGTH];
 		int arrayOneSize = 0;
 		int arrayTwoSize = 0;
+		int arrayOneItem = 0;
+		int arrayTwoItem = 0;
 		int trigger = 0;
+		
 		System.out.println("Enter digit in first array: ");
 		System.out.println("enter zero (0) to stop:");
 		Scanner keyboard = new Scanner(System.in);
-		//Scanner keyboard_2 = new Scanner(System.in);
+		
 		for(int i = 0; i <= arrayOneSize; i++) {
 			
 			arrayOne[i] = keyboard.nextInt();
-			
+			arrayOneItem = arrayOne[i];
 			if(arrayOne[i] == trigger) {
 				
 				System.out.println("Thank you!");
 				System.out.println("You have entered " + arrayOneSize + " numbers in the first array");
-
 				continue;
+				
 			}
 			
 			arrayOneSize++;
@@ -83,18 +88,42 @@ public class CompareArrays {
 
 		for(int j = 0; j <= arrayTwoSize; j++) {
 			arrayTwo[j] = keyboard.nextInt();
-			
+			arrayTwoItem = arrayOne[j];
 			if(arrayOne[j] == trigger) {
 				
 				System.out.println("Thank you!");
 				System.out.println("You have entered " + arrayTwoSize + " numbers in the Second array");
-				continue;
+				
+				//break;
 				
 			}
 			
 			arrayTwoSize++;
 		}
 		
+		int currentSize = 0;
+
+		if(arrayTwoSize < arrayOneSize) {
+			currentSize = arrayTwoSize;
+		} else {
+			currentSize = arrayOneSize;
+		}
+		
+		
+		int[] arrayOfCommons = new int[currentSize];
+		
+		int commonItem = 0;
+		int count = 0;
+		
+		for(int y = 0; y < currentSize; y++) {
+		if(arrayOneItem == arrayTwoItem) {
+			commonItem = arrayOneItem;
+			System.out.print(commonItem + " is a common number");
+			arrayOfCommons[y] = commonItem;
+			count++;
+		}
+		}
+		System.out.print("The total number of common entries is: " + count);	
 	keyboard.close();
 	//keyboard_2.close();
 	}
