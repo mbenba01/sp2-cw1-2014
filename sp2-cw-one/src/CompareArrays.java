@@ -58,10 +58,13 @@ public class CompareArrays {
 		
 		int[] arrayOne = new int[LENGTH];
 		int[] arrayTwo = new int[LENGTH];
+		
 		int arrayOneSize = 0;
 		int arrayTwoSize = 0;
+		
 		int arrayOneItem = 0;
 		int arrayTwoItem = 0;
+		
 		int trigger = 0;
 		
 		System.out.println("Enter digit in first array: ");
@@ -72,7 +75,7 @@ public class CompareArrays {
 			
 			arrayOne[i] = keyboard.nextInt();
 			arrayOneItem = arrayOne[i];
-			if(arrayOne[i] == trigger) {
+			if(arrayOneItem == trigger) {
 				
 				System.out.println("Thank you!");
 				System.out.println("You have entered " + arrayOneSize + " numbers in the first array");
@@ -88,14 +91,12 @@ public class CompareArrays {
 
 		for(int j = 0; j <= arrayTwoSize; j++) {
 			arrayTwo[j] = keyboard.nextInt();
-			arrayTwoItem = arrayOne[j];
-			if(arrayOne[j] == trigger) {
+			arrayTwoItem = arrayTwo[j];
+			if(arrayTwoItem == trigger) {
 				
 				System.out.println("Thank you!");
 				System.out.println("You have entered " + arrayTwoSize + " numbers in the Second array");
-				
-				//break;
-				
+				continue;
 			}
 			
 			arrayTwoSize++;
@@ -113,19 +114,20 @@ public class CompareArrays {
 		int[] arrayOfCommons = new int[currentSize];
 		
 		int commonItem = 0;
-		int count = 0;
+		int count = 1;
 		
 		for(int y = 0; y < currentSize; y++) {
-		if(arrayOneItem == arrayTwoItem) {
-			commonItem = arrayOneItem;
-			System.out.print(commonItem + " is a common number");
-			arrayOfCommons[y] = commonItem;
-			count++;
+			for(int x = 0; x < currentSize; x++) {
+				if((arrayOne[y] == arrayTwo[x])) {
+					commonItem = arrayOne[y];
+					arrayOfCommons[y] = commonItem;
+					System.out.println(arrayOfCommons[y] + " is a common number");
+					count++;
+				}
+			}
 		}
-		}
-		System.out.print("The total number of common entries is: " + count);	
+		System.out.println("The total number of common entries is: " + count);	
 	keyboard.close();
-	//keyboard_2.close();
 	}
 	
 
